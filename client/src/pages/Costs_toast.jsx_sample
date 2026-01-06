@@ -1,0 +1,36 @@
+import Toast from '../components/Toast';
+
+const Costs = () => {
+  const [toast, setToast] = useState({ show: false, message: '', type: 'info' });
+  const [modal, setModal] = useState({ show: false, title: '', message: '', type: 'info' });
+  };
+
+  useEffect(() => {
+    loadCosts();
+  }, [startDate, endDate]);
+
+  const loadCosts = async () => {
+    try {
+      setCosts(data.costs || []);
+      setTotal(data.total || 0);
+    } catch (error) {
+    }
+  };
+
+  const handleAddCost = async () => {
+    try {
+      setModal({ show: true, title: '등록 완료', message: '비용이 등록되었습니다!', type: 'success' });
+      setToast({ show: true, message: '비용이 등록되었습니다!', type: 'success' });
+    } catch (error) {
+      setModal({ show: true, title: '등록 실패', message: '등록 실패: ' + (error.message || '오류'), type: 'error' });
+      setToast({ show: true, message: '등록 실패: ' + (error.message || '오류'), type: 'error' });
+    }
+  };
+
+
+      <Toast
+        show={toast.show}
+        message={toast.message}
+        type={toast.type}
+        onClose={() => setToast({ ...toast, show: false })}
+      />
